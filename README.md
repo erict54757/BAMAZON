@@ -3,12 +3,23 @@
 
 ## About BAMAZON
  1. This program allows a manager to view the products in the inventory database. 
-     1. ![View the Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Display%20Inventory.PNG?raw=true)  1a
+     1. ![View the Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Display%20Inventory.PNG?raw=true)
 
-    2. The manager can view the inventory that has quantities that becoming low in stock. 
-        1.  ![View the Low Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Displaying%20Low-Inventory.PNG?raw=true) 2a
-     The manager can add quantities to any product.
-     The manager can create an entirely new product.
+ 2. The manager can view the inventory that is becoming low in stock. 
+    1.  ![View the Low Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Displaying%20Low-Inventory.PNG?raw=true) 
+ 3. The manager can add quantities to any product.
+    1. ![View the Low Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Change%20Inventory%20Start.PNG?raw=true) 
+        2. ![View the Low Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Change%20Inventory%20End.PNG?raw=true) 
+
+     
+ 4. The manager can create an entirely new product.
+    1. ![View the Low Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Added%20a%20Product.PNG?raw=true) 
+        2. ![View the Low Inventory](https://github.com/erict54757/BAMAZON/blob/master/assets/Inventory%20showing%20added%20Product.PNG?raw=true) 
     
 
-3. 
+## Usability
+    - This program can be implemented to:
+        - Help track the status of many stores inventory.
+        - See the available inventory.
+        - Update quantities of inventory.
+        - Add all new products to your inventory list.
