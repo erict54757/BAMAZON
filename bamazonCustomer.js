@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
     password: "root",
     database: "bamazon_db"
 });
-var namePrompt=[]
+
 var operations = {
     loopProducts: function () {
         console.log("Displaying all inventory\n");
@@ -22,35 +22,37 @@ var operations = {
             if (err) throw err;
             // Log all results of the SELECT statement
             for (let i = 0; i < res.length; i++) {
-               var nameData=res[i].productName+",";
+                nameData = res[i].productName;
+
                 namePrompt.push(nameData);
+
 
             }
             console.log(namePrompt)
-            
-            
-        }); inquirer.prompt([
 
+
+        })
+
+        inquirer.prompt([
 
 
             {
                 type: "list",
                 name: "doingThis",
                 message: "Welcome, what would you like to do?",
-                choices: [namePrompt.forEach(element=> {
-                    
-                })]
+                choices: namePrompt
 
             },
 
         ]).then(function (result) {
+            connection.end();
             // if (result.doingThis === "pant") {
-                operations.readProducts();
+            operations.readProducts();
             // } 
 
-           
+
         })
-         connection.end();
+
     },
     readProducts: function () {
         console.log("Displaying all inventory\n");
@@ -58,11 +60,11 @@ var operations = {
             if (err) throw err;
             // Log all results of the SELECT statement
             for (let i = 0; i < res.length; i++) {
-               
+
 
                 console.log("Id:" + res[i].id + "\n" + "Name:" + res[i].productName + "\n" + "Department:" + res[i].departmentName + "\n" + "Price:" + res[i].price + "\n" + "Quantity:" + res[i].stockQuantity);
             }
-            
+
             connection.end();
         });
     },
@@ -87,7 +89,7 @@ var operations = {
     updateInventory: function () {
         console.log("Updating inventory quantaties of blank" + "\n");
         var query = connection.query(
-        "UPDATE products SET ? WHERE ?",
+            "UPDATE products SET ? WHERE ?",
             [
                 {
                     stockQuantity: 200
@@ -102,7 +104,7 @@ var operations = {
 
             }
         );
-            connection.end();
+        connection.end();
 
 
 
@@ -110,30 +112,30 @@ var operations = {
     //  updateInventory();
     createProduct: function () {
         console.log("Inserting a new product...\n");
-         query = connection.query(
+        query = connection.query(
             "INSERT INTO products SET ?",
             {
-                productName: "yo",
-                departmentName: "r",
-                price: 3.00,
-                stockQuantity: 50,
+                productName: addProduct,
+                departmentName: addDepartment,
+                price: parseInt(addPrice),
+                stockQuantity: parseInt(addQuantity),
             },
             function (err, res) {
                 console.log((res.affectedRows) + " product inserted!\n");
-        // Call updateProduct AFTER the INSERT completes
-        
-        
-    }
-        );connection.end(); 
-        
-      
+                // Call updateProduct AFTER the INSERT completes
+
+
+            }
+        ); connection.end();
+
+
     },
     reset: function () {
 
     }
-      
+
 }
-   
+
 
 // logs the actual query being run
 
@@ -142,3 +144,4 @@ var operations = {
 
 
 module.exports = operations;
+

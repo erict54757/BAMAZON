@@ -29,8 +29,41 @@ inquirer.prompt([
     if (answers.doingWhat === "I want to change my quantity of a product.") {
         operations.loopProducts();
     }
-       
-        
-    })
+    if (answers.doingWhat === "I want to add a Product.") {
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "productName",
+                message: "What is the product name?"
+            },
+            {
+                type: "input",
+                name: "departmentName",
+                message: "In what department does it belong?"
+            },
+            {
+                type: "input",
+                name: "price",
+                message: "What is the price?"
+            },
+            {
+                type: "input",
+                name: "stockQuantity",
+                message: "How many are there?"
+            },
+
+
+        ]).then(function (result) {
+            addProduct = result.productName;
+            addDepartment = result.departmentName;
+            addPrice = result.price;
+            addQuantity = result.stockQuantity;
+
+        }).then(function () {
+            operations.createProduct();
+        })
+
+    }
+})
 
 
