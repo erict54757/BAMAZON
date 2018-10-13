@@ -18,8 +18,15 @@
     
 
 ## Usability
-    - This program can be implemented to:
-        - Help track the status of many stores inventory.
-        - See the available inventory.
-        - Update quantities of inventory.
-        - Add all new products to your inventory list.
+ - This program can be implemented to:
+     - Help track the status of many stores inventory.
+     - See the available inventory.
+     - Update quantities of inventory.
+     - Add all new products to your inventory list.
+
+## How to Use the Application
+    - Open the CLI and navigate to the folder.
+    - Copy the database file to your Mysql.
+    - Open the bamazonCustomer.js file in your editor and set the var connection parameters to your machine.
+    - Type: Node CLI.js 
+    - You will be prompted command line with four choices of add inventory, update inventory, view inventory, and view low-inventory. 
