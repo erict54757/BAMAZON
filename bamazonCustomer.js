@@ -28,35 +28,38 @@ var operations = {
 
 
             }
-            return console.log(namePrompt)
-
+     
+            operations.selectProduct();
         })
-        operations.selectProduct();
         
         
-        connection.end();
+        
     },
     selectProduct: function () {
-        namePrompt=operations.loopProducts();
         inquirer.prompt([
 
 
             {
                 type: "list",
                 name: "doingThis",
-                message: "Welcome, what would you like to do?",
+                message: "What product would you like to change?",
                 choices: namePrompt
 
             },
+            {
+                type: "input",
+                name: "changeQuantity",
+                message: "What should the new quantity be?",
+                
+
+            }
 
         ]).then(function (result) {
+            productSelect=result.doingThis;
+            changeQuantity= parseInt(result.changeQuantity)
+            operations.updateInventory();
 
-            // if (result.doingThis === "pant") {
-            operations.readProducts();
-            // } 
-
-
-        })
+     })
 
     },
     readProducts: function () {
@@ -92,24 +95,28 @@ var operations = {
     // lowInventory()
     // readProducts()
     updateInventory: function () {
-        console.log("Updating inventory quantaties of blank" + "\n");
+        console.log("Updating inventory quantaties of "+productSelect + "\n");
         var query = connection.query(
+           
             "UPDATE products SET ? WHERE ?",
             [
                 {
-                    stockQuantity: 200
+                    stockQuantity: changeQuantity
                 },
                 {
-                    productName: "your"
+                    productName: productSelect
                 }
             ],
             function (err, res) {
+                
                 console.log(res.affectedRows + " products updated!\n");
-                // Call deleteProduct AFTER the UPDATE completes
+                
 
             }
+           
+           
         );
-        connection.end();
+          connection.end()
 
 
 
