@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer")
-
+var namePrompt= []
 var connection = mysql.createConnection({
     host: "localhost",
 
@@ -28,11 +28,16 @@ var operations = {
 
 
             }
-            console.log(namePrompt)
-
+            return console.log(namePrompt)
 
         })
-
+        operations.selectProduct();
+        
+        
+        connection.end();
+    },
+    selectProduct: function () {
+        namePrompt=operations.loopProducts();
         inquirer.prompt([
 
 
@@ -45,7 +50,7 @@ var operations = {
             },
 
         ]).then(function (result) {
-            connection.end();
+
             // if (result.doingThis === "pant") {
             operations.readProducts();
             // } 
